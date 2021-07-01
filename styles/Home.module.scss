@@ -1,0 +1,35 @@
+$primary-color: #6f02b5;
+
+.container {
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    padding: 5rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    width: 100%;
+    height: 100px;
+    background: $primary-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+    }
+}
