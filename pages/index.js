@@ -1,9 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 import styles from '../styles/Home.module.scss';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
-import Loader from '../components/Loader/Loader';
 
 function Home() {
   return (
@@ -11,11 +8,10 @@ function Home() {
       <Head>
         <title>KaiOS News</title>
       </Head>
-      <Header />
+
       <main className={styles.main}>
         <h1>Home page</h1>
       </main>
-      <Footer />
     </div>
   );
 }
