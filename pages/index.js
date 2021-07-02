@@ -1,7 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.scss';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 
 function Home() {
   return (
@@ -9,21 +10,11 @@ function Home() {
       <Head>
         <title>KaiOS News</title>
       </Head>
-
-      <main className={styles.main}></main>
-
-      <footer className={styles.footer}>
-        <a>
-          <span className={styles.logo}>
-            <Image
-              src='/assets/KaiOS-Logo.svg'
-              alt='KaiOS Logo'
-              width={142}
-              height={56}
-            />
-          </span>
-        </a>
-      </footer>
+      <Header />
+      <main className={styles.main}>
+        <h1>Home page</h1>
+      </main>
+      <Footer />
     </div>
   );
 }

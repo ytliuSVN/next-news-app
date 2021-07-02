@@ -10,26 +10,16 @@ $primary-color: #6f02b5;
 }
 
 .main {
-    padding: 5rem 0;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.footer {
-    width: 100%;
-    height: 100px;
-    background: $primary-color;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-grow: 1;
-    }
+    background-color: beige;
+    padding-top: 65px;
 }
