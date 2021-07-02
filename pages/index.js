@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>KaiOS News</title>
+        <title>KaiOS | News</title>
       </Head>
 
       <main className={styles.main}>
