@@ -6,7 +6,7 @@ function Card() {
       <figure className={styles.figure}>
         <img
           className={styles.figure_img}
-          src='http://placekitten.com/400/600'
+          src='http://placekitten.com/500/300'
         />
         <figcaption className={styles.figcaption}>
           <h3>Sky News to launch dedicated regional Australia channel</h3>

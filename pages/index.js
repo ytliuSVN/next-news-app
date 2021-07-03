@@ -4,7 +4,8 @@ import Link from 'next/link';
 import Card from '../components/Card/Card';
 import styles from '../styles/Home.module.scss';
 
-function Home() {
+function Home({ news }) {
+  // console.log(news);
   return (
     <div className='container'>
       <Head>
@@ -25,19 +26,6 @@ function Home() {
               </a>
             </Link>
           ))} */}
-
-          <style global jsx>{`
-            .single {
-              padding: 2px 16px;
-              background: #e3e3e3;
-              display: block;
-              margin: 20px 10px;
-              border-left: 8px solid #e3e3e3;
-            }
-            .single:hover {
-              border-left: 8px solid #4979ff;
-            }
-          `}</style>
         </section>
 
         <h1>Sports</h1>
@@ -47,13 +35,25 @@ function Home() {
   );
 }
 
-// export const getStaticProps = async () => {
-//   const res = await fetch('https://jsonplaceholder.typicode.com/users');
-//   const data = await res.json();
+export const getStaticProps = async () => {
+  const GUARDIAN_API_KEY = process.env.GUARDIAN_API_KEY;
+  const GUARDIAN_API_URL = process.env.GUARDIAN_API_URL;
 
-//   return {
-//     props: { users: data },
-//   };
-// };
+  // Top story section
+  const baseUrl = `${GUARDIAN_API_URL}search?page-size=8&q=news&show-fields=body,headline,thumbnail&api-key=${GUARDIAN_API_KEY}`;
+
+  // Category based news section [sport|culture|lifeandstyle] filter
+  // const baseUrl = `${GUARDIAN_API_URL}search?page-size=3&q=lifeandstyle&show-fields=body,headline,thumbnail&api-key=${GUARDIAN_API_KEY}`;
+
+  // Article page
+  // const baseUrl = `${GUARDIAN_API_URL}food/2021/mar/16/cookies-brownies-and-savoury-bakes-for-park-breaks?show-elements=image&show-fields=body,headline&api-key=${GUARDIAN_API_KEY}`;
+
+  const res = await fetch(baseUrl);
+  const data = await res.json();
+
+  return {
+    props: { news: data },
+  };
+};
 
 export default Home;
