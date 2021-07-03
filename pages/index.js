@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../styles/Home.module.scss';
 
-function Home({ users }) {
+function Home() {
   return (
     <div className='container'>
       <Head>
@@ -13,7 +13,7 @@ function Home({ users }) {
       <main>
         <h1>Top Stories</h1>
         <section>
-          {users.map((user) => (
+          {/* {users.map((user) => (
             <Link key={user.id}  href={{
               pathname: '/article/',
               query: { id: user.id }
@@ -22,7 +22,7 @@ function Home({ users }) {
                 <h3>{user.name}</h3>
               </a>
             </Link>
-          ))}
+          ))} */}
 
           <style global jsx>{`
             .single {
@@ -45,13 +45,13 @@ function Home({ users }) {
   );
 }
 
-export const getStaticProps = async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users');
-  const data = await res.json();
+// export const getStaticProps = async () => {
+//   const res = await fetch('https://jsonplaceholder.typicode.com/users');
+//   const data = await res.json();
 
-  return {
-    props: { users: data },
-  };
-};
+//   return {
+//     props: { users: data },
+//   };
+// };
 
 export default Home;
