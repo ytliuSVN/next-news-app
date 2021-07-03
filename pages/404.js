@@ -22,17 +22,6 @@ function NotFound() {
           <a>Home page</a>
         </Link>
       </p>
-
-      <style global jsx>{`
-        .container {
-          min-height: 100vh;
-          height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-      `}</style>
     </div>
   );
 }

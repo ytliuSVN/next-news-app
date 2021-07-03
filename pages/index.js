@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import styles from '../styles/Home.module.scss';
 
 function Home({ users }) {
@@ -11,7 +12,31 @@ function Home({ users }) {
 
       <main>
         <h1>Top Stories</h1>
-        <section>111</section>
+        <section>
+          {users.map((user) => (
+            <Link key={user.id}  href={{
+              pathname: '/article/',
+              query: { id: user.id }
+            }}>
+              <a className='single'>
+                <h3>{user.name}</h3>
+              </a>
+            </Link>
+          ))}
+
+          <style global jsx>{`
+            .single {
+              padding: 2px 16px;
+              background: #e3e3e3;
+              display: block;
+              margin: 20px 10px;
+              border-left: 8px solid #e3e3e3;
+            }
+            .single:hover {
+              border-left: 8px solid #4979ff;
+            }
+          `}</style>
+        </section>
 
         <h1>Sports</h1>
         <section>222</section>
@@ -20,13 +45,13 @@ function Home({ users }) {
   );
 }
 
-// export const getStaticProps = async () => {
-//   const res = await fetch('https://jsonplaceholder.typicode.com/todos/');
-//   const data = await res.json();
+export const getStaticProps = async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+  const data = await res.json();
 
-//   return {
-//     props: { users: data },
-//   };
-// };
+  return {
+    props: { users: data },
+  };
+};
 
 export default Home;

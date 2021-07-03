@@ -37,6 +37,11 @@ a {
     padding: 10vmin 2vmin;
     width: 100%;
     max-width: 1140px;
+
+    &.not-found {
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .not-found {
