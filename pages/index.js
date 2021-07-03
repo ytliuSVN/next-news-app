@@ -10,21 +10,38 @@ function Home() {
   const { publicRuntimeConfig } = getConfig();
   const [sport, setSport] = useState([]);
   const [culture, setCulture] = useState([]);
+  const [lifeStyle, setLifeStyle] = useState([]);
 
   useEffect(() => {
     fetchNews();
   }, []);
 
   const fetchNews = () => {
-    // Category based news section [sport|culture|lifeandstyle] filter
-    const baseUrl_sport = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&q=sport&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
-    const baseUrl_culture = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&q=culture&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
-    const getSport = axios.get(baseUrl_sport);
-    const getCulture = axios.get(baseUrl_culture);
-    // axios.all([getSport, getCulture]).then(axios.spread((...allNews) => {}));
-    Promise.all([getSport, getCulture]).then(function (values) {
-      console.log(values);
-    });
+    // Top story section
+    // const baseUrl_Top = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=8&section=news&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
+
+    // Category based news section
+    const baseUrl_Sport = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&section=sport&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
+    const baseUrl_Culture = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&section=culture&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
+    const baseUrl_LifeStyle = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&section=lifeandstyle&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
+
+    const getSport = axios.get(baseUrl_Sport);
+    const getCulture = axios.get(baseUrl_Culture);
+    const getLifeStyle = axios.get(baseUrl_LifeStyle);
+
+    axios.all([getSport, getCulture, getLifeStyle]).then(
+      axios.spread((...allNews) => {
+        // console.log(allNews)
+
+        const allSport = allNews[0].data.response.results;
+        const allCulture = allNews[1].data.response.results;
+        const allLifeStyle = allNews[2].data.response.results;
+
+        setSport(allSport);
+        setCulture(allCulture);
+        setLifeStyle(allLifeStyle);
+      })
+    );
   };
 
   return (
@@ -36,7 +53,7 @@ function Home() {
       <main>
         <h1>Top Stories</h1>
         <section>
-          <Card />
+          {/* <Card /> */}
           {/* {users.map((user) => (
             <Link key={user.id}  href={{
               pathname: '/article/',
@@ -50,7 +67,13 @@ function Home() {
         </section>
 
         <h1>Sports</h1>
-        <section>222</section>
+        <section></section>
+
+        <h1>Culture</h1>
+        <section></section>
+
+        <h1>Life & Style</h1>
+        <section></section>
       </main>
     </div>
   );
@@ -60,12 +83,6 @@ function Home() {
 export const getStaticProps = async () => {
   const GUARDIAN_API_KEY = process.env.GUARDIAN_API_KEY;
   const GUARDIAN_API_URL = process.env.GUARDIAN_API_URL;
-
-  // Top story section
-  const baseUrl = `${GUARDIAN_API_URL}search?page-size=8&q=news&show-fields=body,headline,thumbnail&api-key=${GUARDIAN_API_KEY}`;
-
-  // Category based news section [sport|culture|lifeandstyle] filter
-  // const baseUrl = `${GUARDIAN_API_URL}search?page-size=3&q=lifeandstyle&show-fields=body,headline,thumbnail&api-key=${GUARDIAN_API_KEY}`;
 
   // Article page
   // const baseUrl = `${GUARDIAN_API_URL}food/2021/mar/16/cookies-brownies-and-savoury-bakes-for-park-breaks?show-elements=image&show-fields=body,headline&api-key=${GUARDIAN_API_KEY}`;
