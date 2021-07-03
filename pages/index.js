@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import axios from 'axios';
+import getConfig from 'next/config';
 import Card from '../components/Card/Card';
 import styles from '../styles/Home.module.scss';
 
-function Home({ news }) {
-  // console.log(news);
+function Home() {
+  const { publicRuntimeConfig } = getConfig();
+  const [sport, setSport] = useState([]);
+  const [culture, setCulture] = useState([]);
+
+  useEffect(() => {
+    fetchNews();
+  }, []);
+
+  const fetchNews = () => {
+    // Category based news section [sport|culture|lifeandstyle] filter
+    const baseUrl_sport = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&q=sport&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
+    const baseUrl_culture = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&q=culture&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
+    const getSport = axios.get(baseUrl_sport);
+    const getCulture = axios.get(baseUrl_culture);
+    // axios.all([getSport, getCulture]).then(axios.spread((...allNews) => {}));
+    Promise.all([getSport, getCulture]).then(function (values) {
+      console.log(values);
+    });
+  };
+
   return (
     <div className='container'>
       <Head>
@@ -35,6 +56,7 @@ function Home({ news }) {
   );
 }
 
+/*
 export const getStaticProps = async () => {
   const GUARDIAN_API_KEY = process.env.GUARDIAN_API_KEY;
   const GUARDIAN_API_URL = process.env.GUARDIAN_API_URL;
@@ -55,5 +77,6 @@ export const getStaticProps = async () => {
     props: { news: data },
   };
 };
+*/
 
 export default Home;
