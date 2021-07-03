@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Card from '../components/Card/Card';
 import styles from '../styles/Home.module.scss';
 
 function Home() {
@@ -13,6 +14,7 @@ function Home() {
       <main>
         <h1>Top Stories</h1>
         <section>
+          <Card />
           {/* {users.map((user) => (
             <Link key={user.id}  href={{
               pathname: '/article/',

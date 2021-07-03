@@ -1,0 +1,25 @@
+.figure {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    max-width: 540px;
+    width: 100%;
+
+    .figure_img {
+        object-fit: fill;
+        width: 100%;
+        height: auto;
+        max-width: 540px;
+        max-height: 423px;
+    }
+
+    .figcaption {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 5px;
+        right: 0;
+        color: white;
+        background-color: rgba(85, 6, 158, 0.685);
+    }
+}
