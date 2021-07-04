@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import getConfig from 'next/config';
 import Head from 'next/head';
 import Link from 'next/link';
 import axios from 'axios';
-import getConfig from 'next/config';
+import Loader from '../components/Loader/Loader';
 import Card from '../components/Card/Card';
 import styles from '../styles/Home.module.scss';
 
 function Home() {
   const { publicRuntimeConfig } = getConfig();
+  const [isLoading, setIsLoading] = useState(true);
+
   const [sport, setSport] = useState([]);
   const [culture, setCulture] = useState([]);
   const [lifeStyle, setLifeStyle] = useState([]);
@@ -17,6 +20,8 @@ function Home() {
   }, []);
 
   const fetchNews = () => {
+    setIsLoading(true); //starts spinner
+
     // Top story section
     // const baseUrl_Top = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=8&section=news&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
 
@@ -29,19 +34,31 @@ function Home() {
     const getCulture = axios.get(baseUrl_Culture);
     const getLifeStyle = axios.get(baseUrl_LifeStyle);
 
-    axios.all([getSport, getCulture, getLifeStyle]).then(
-      axios.spread((...allNews) => {
-        // console.log(allNews)
+    axios
+      .all([getSport, getCulture, getLifeStyle])
+      .then(
+        axios.spread((...allNews) => {
+          // console.log(allNews)
+          const allSport = allNews[0].data.response.results;
+          const allCulture = allNews[1].data.response.results;
+          const allLifeStyle = allNews[2].data.response.results;
 
-        const allSport = allNews[0].data.response.results;
-        const allCulture = allNews[1].data.response.results;
-        const allLifeStyle = allNews[2].data.response.results;
-
-        setSport(allSport);
-        setCulture(allCulture);
-        setLifeStyle(allLifeStyle);
+          setSport(allSport);
+          setCulture(allCulture);
+          setLifeStyle(allLifeStyle);
+        })
+      )
+      .catch(function (error) {
+        setIsLoading(false);
+        console.log(error);
       })
-    );
+      .finally(function () {
+        setIsLoading(false); // stop spinner (in response/error)
+      });
+  };
+
+  const getContent = () => {
+    if (isLoading) return <Loader />;
   };
 
   return (
@@ -50,11 +67,16 @@ function Home() {
         <title>KaiOS | News</title>
       </Head>
 
-      <main>
-        <h1>Top Stories</h1>
-        <section>
-          {/* <Card /> */}
-          {/* {users.map((user) => (
+      {isLoading ? (
+        <div className='loader-container'>
+          <Loader />
+        </div>
+      ) : (
+        <main>
+          <h1>Top Stories</h1>
+          <section>
+            {/* <Card /> */}
+            {/* {users.map((user) => (
             <Link key={user.id}  href={{
               pathname: '/article/',
               query: { id: user.id }
@@ -64,17 +86,18 @@ function Home() {
               </a>
             </Link>
           ))} */}
-        </section>
+          </section>
 
-        <h1>Sports</h1>
-        <section></section>
+          <h1>Sports</h1>
+          <section></section>
 
-        <h1>Culture</h1>
-        <section></section>
+          <h1>Culture</h1>
+          <section></section>
 
-        <h1>Life & Style</h1>
-        <section></section>
-      </main>
+          <h1>Life & Style</h1>
+          <section></section>
+        </main>
+      )}
     </div>
   );
 }

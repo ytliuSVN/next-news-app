@@ -44,6 +44,16 @@ a {
     }
 }
 
+.loader-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // Ignore parent padding
+    margin: -10vmin -2vmin;
+}
+
 .not-found {
     text-align: center;
 
