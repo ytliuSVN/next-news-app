@@ -1,6 +1,13 @@
+<div align="left">
+
+![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
+</div>
+
 # NextJS News App
 
-
+A News App built using NextJS, utilizing [Guardian API](https://open-platform.theguardian.com/) to fetch the article data.
 ## User Stories
 
 
