@@ -10,14 +10,17 @@ function Article({ news }) {
       </Head>
 
       <main>
-        <article>
-          <button type='button'>Click Me!</button>
+        <article className={styles.wrapper}>
+          {/* <button type='button'>Click Me!</button> */}
           <article>
-            <p>{news.webPublicationDate}</p>
-            <h1>{news.webTitle}</h1>
+            <p className={styles.date}>{news.webPublicationDate}</p>
+            <h2>{news.webTitle}</h2>
             <h4>{news.fields.headline}</h4>
-            <hr />
-            <div dangerouslySetInnerHTML={{ __html: news.fields.body }} />
+            <hr className={styles.divider} />
+            <div
+              className={styles.content}
+              dangerouslySetInnerHTML={{ __html: news.fields.body }}
+            />
           </article>
 
           <article>
@@ -27,7 +30,7 @@ function Article({ news }) {
               width={445}
               height={267}
             />
-            <p>{news.fields.headline}</p>
+            <p className={styles.figcaption}>{news.fields.headline}</p>
           </article>
         </article>
       </main>

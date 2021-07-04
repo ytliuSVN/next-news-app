@@ -1,0 +1,32 @@
+.wrapper {
+    font-weight: normal;
+    font-style: normal;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.date {
+    font-size: 12px;
+    line-height: 31px;
+    letter-spacing: 0.83px;
+    text-transform: uppercase;
+}
+
+.divider {
+    mix-blend-mode: normal;
+    opacity: 0.2;
+    border: 1px solid #979797;
+}
+
+.content {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+}
+
+.figcaption {
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.3px;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+}

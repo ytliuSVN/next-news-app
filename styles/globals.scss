@@ -12,6 +12,32 @@ body {
     font-family: -apple-system, $font-stack;
 }
 
+h1,
+h2,
+h4 {
+    font-style: normal;
+    font-weight: bold;
+    letter-spacing: 0.07px;
+    color: rgba(0, 0, 0, 0.87);
+    margin: 10px 0px;
+    padding: 0;
+}
+
+h1 {
+    font-size: 48px;
+    line-height: 49px;
+}
+
+h2 {
+    font-size: 34px;
+    line-height: 39px;
+}
+
+h4 {
+    font-size: 20px;
+    line-height: 26px;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -34,7 +60,7 @@ a {
     flex-direction: column;
     margin: 0 auto;
     position: relative;
-    padding: 60px 24px;
+    padding: 60px 16px;
     width: 100%;
     max-width: 1140px;
 

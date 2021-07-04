@@ -72,7 +72,7 @@ function Home() {
           <h1>Top Stories</h1>
           <section>{/* <Card /> */}</section>
 
-          <h1>Sports</h1>
+          <h2>Sports</h2>
           <section>
             {sport.map((item) => (
               <Link
@@ -89,7 +89,7 @@ function Home() {
             ))}
           </section>
 
-          <h1>Culture</h1>
+          <h2>Culture</h2>
           <section>
             {culture.map((item) => (
               <Link
@@ -106,7 +106,7 @@ function Home() {
             ))}
           </section>
 
-          <h1>Life & Style</h1>
+          <h2>Life & Style</h2>
           <section>
             {lifeStyle.map((item) => (
               <Link
