@@ -34,7 +34,7 @@ a {
     flex-direction: column;
     margin: 0 auto;
     position: relative;
-    padding: 10vmin 2vmin;
+    padding: 60px 24px;
     width: 100%;
     max-width: 1140px;
 
@@ -44,14 +44,16 @@ a {
     }
 }
 
+main {
+    padding-top: 44px;
+}
+
 .loader-container {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // Ignore parent padding
-    margin: -10vmin -2vmin;
 }
 
 .not-found {

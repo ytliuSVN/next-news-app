@@ -57,10 +57,6 @@ function Home() {
       });
   };
 
-  const getContent = () => {
-    if (isLoading) return <Loader />;
-  };
-
   return (
     <div className='container'>
       <Head>
@@ -74,49 +70,62 @@ function Home() {
       ) : (
         <main>
           <h1>Top Stories</h1>
-          <section>
-            {/* <Card /> */}
-            {/* {users.map((user) => (
-            <Link key={user.id}  href={{
-              pathname: '/article/',
-              query: { id: user.id }
-            }}>
-              <a className='single'>
-                <h3>{user.name}</h3>
-              </a>
-            </Link>
-          ))} */}
-          </section>
+          <section>{/* <Card /> */}</section>
 
           <h1>Sports</h1>
-          <section></section>
+          <section>
+            {sport.map((item) => (
+              <Link
+                key={item.id}
+                href={{
+                  pathname: '/article/',
+                  query: { id: item.id },
+                }}
+              >
+                <a>
+                  <h3>{item.webTitle}</h3>
+                </a>
+              </Link>
+            ))}
+          </section>
 
           <h1>Culture</h1>
-          <section></section>
+          <section>
+            {culture.map((item) => (
+              <Link
+                key={item.id}
+                href={{
+                  pathname: '/article/',
+                  query: { id: item.id },
+                }}
+              >
+                <a>
+                  <h3>{item.webTitle}</h3>
+                </a>
+              </Link>
+            ))}
+          </section>
 
           <h1>Life & Style</h1>
-          <section></section>
+          <section>
+            {lifeStyle.map((item) => (
+              <Link
+                key={item.id}
+                href={{
+                  pathname: '/article/',
+                  query: { id: item.id },
+                }}
+              >
+                <a>
+                  <h3>{item.webTitle}</h3>
+                </a>
+              </Link>
+            ))}
+          </section>
         </main>
       )}
     </div>
   );
 }
-
-/*
-export const getStaticProps = async () => {
-  const GUARDIAN_API_KEY = process.env.GUARDIAN_API_KEY;
-  const GUARDIAN_API_URL = process.env.GUARDIAN_API_URL;
-
-  // Article page
-  // const baseUrl = `${GUARDIAN_API_URL}food/2021/mar/16/cookies-brownies-and-savoury-bakes-for-park-breaks?show-elements=image&show-fields=body,headline&api-key=${GUARDIAN_API_KEY}`;
-
-  const res = await fetch(baseUrl);
-  const data = await res.json();
-
-  return {
-    props: { news: data },
-  };
-};
-*/
 
 export default Home;

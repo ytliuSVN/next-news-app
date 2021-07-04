@@ -1,10 +1,8 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-
-function Article({ users }) {
-  const { id } = useRouter().query;
-  const target = users.filter((el) => el.id === +id);
-
+import getConfig from 'next/config';
+import Image from 'next/image';
+import styles from '../styles/Article.module.scss';
+function Article({ news }) {
   return (
     <div className='container'>
       <Head>
@@ -12,27 +10,36 @@ function Article({ users }) {
       </Head>
 
       <main>
-        <h1>Article Page</h1>
-        {target.map((user) => {
-          return (
-            <div key={user.id}>
-              <h1>{user.name}</h1>
-              <p>{user.email}</p>
-              <p>{user.website}</p>
-              <p>{user.address.city}</p>
-            </div>
-          );
-        })}
+        <article>
+          <button type='button'>Click Me!</button>
+          <article>
+            <p>{news.webPublicationDate}</p>
+            <h1>{news.webTitle}</h1>
+            <h4>{news.fields.headline}</h4>
+            <hr />
+            <div dangerouslySetInnerHTML={{ __html: news.fields.body }} />
+          </article>
+
+          <article>
+            <Image
+              src={news.fields.thumbnail}
+              alt='Article media'
+              width={445}
+              height={267}
+            />
+            <p>{news.fields.headline}</p>
+          </article>
+        </article>
       </main>
     </div>
   );
 }
 
-export default Article;
-
-export const getStaticProps = async () => {
-  const domain = 'https://jsonplaceholder.typicode.com';
-  const res = await fetch(`${domain}/users`);
+Article.getInitialProps = async ({ query }) => {
+  const { publicRuntimeConfig } = getConfig();
+  const { id } = query;
+  const baseUrl = `${publicRuntimeConfig.GUARDIAN_API_URL}${id}?show-elements=image&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
+  const res = await fetch(baseUrl);
   const data = await res.json();
 
   if (!data) {
@@ -41,7 +48,7 @@ export const getStaticProps = async () => {
     };
   }
 
-  return {
-    props: { users: data },
-  };
+  return { news: data.response.content };
 };
+
+export default Article;
