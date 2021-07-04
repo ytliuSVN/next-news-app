@@ -47,6 +47,10 @@ a {
     box-sizing: border-box;
 }
 
+main {
+    padding-top: 44px;
+}
+
 .content {
     height: 100vh; /* for shorter content */
     min-height: 100vh;
@@ -70,10 +74,6 @@ a {
     }
 }
 
-main {
-    padding-top: 44px;
-}
-
 .loader-container {
     flex: 1;
     display: flex;
@@ -89,4 +89,17 @@ main {
         color: #4979ff;
         text-decoration: underline;
     }
+}
+
+/* Resize article media */
+.gu-image {
+    width: 100%;
+    height: auto;
+}
+
+.element-video iframe {
+    height: 280px;
+    width: 100%;
+    resize: both;
+    overflow: auto;
 }

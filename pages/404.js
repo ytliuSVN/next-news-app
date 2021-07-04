@@ -14,8 +14,8 @@ function NotFound() {
 
   return (
     <div className='not-found container'>
-      <h1>Page Not Found</h1>
-      <h2>We could not find what you were looking for.</h2>
+      <h2>Page Not Found</h2>
+      <h4>We could not find what you were looking for.</h4>
       <p>
         Go back to the{' '}
         <Link href='/'>

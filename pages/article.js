@@ -12,7 +12,8 @@ function Article({ news }) {
       <main>
         <article className={styles.wrapper}>
           {/* <button type='button'>Click Me!</button> */}
-          <article>
+
+          <article className={styles.content_wrapper}>
             <p className={styles.date}>{news.webPublicationDate}</p>
             <h2>{news.webTitle}</h2>
             <h4>{news.fields.headline}</h4>
@@ -23,12 +24,12 @@ function Article({ news }) {
             />
           </article>
 
-          <article>
+          <article className={styles.media_wrapper}>
             <Image
               src={news.fields.thumbnail}
               alt='Article media'
-              width={445}
-              height={267}
+              width={500}
+              height={300}
             />
             <p className={styles.figcaption}>{news.fields.headline}</p>
           </article>

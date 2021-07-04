@@ -1,7 +1,22 @@
 .wrapper {
+    display: flex;
+    flex-direction: row;
     font-weight: normal;
     font-style: normal;
     color: rgba(0, 0, 0, 0.87);
+}
+
+.content_wrapper {
+    width: 57%;
+    max-width: 650px;
+    padding-right: 15px;
+}
+
+.media_wrapper {
+    padding-top: 25vh;
+    width: 43%;
+    max-width: 450px;
+    padding-left: 15px;
 }
 
 .date {
@@ -29,4 +44,21 @@
     letter-spacing: 0.3px;
     mix-blend-mode: normal;
     opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+    .wrapper {
+        width: 100%;
+        flex-direction: column;
+
+        .content_wrapper,
+        .media_wrapper {
+            width: 100%;
+            padding: 0;
+        }
+    }
+
+    .media_wrapper {
+        margin-top: 20px;
+    }
 }
