@@ -2,7 +2,14 @@ import Head from 'next/head';
 import getConfig from 'next/config';
 import Image from 'next/image';
 import styles from '../styles/Article.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 function Article({ news }) {
+  const iconCalendar = (
+    <FontAwesomeIcon icon={faCalendarAlt} color='#000000de' />
+  );
+
   return (
     <div className='container'>
       <Head>
@@ -14,7 +21,9 @@ function Article({ news }) {
           {/* <button type='button'>Click Me!</button> */}
 
           <article className={styles.content_wrapper}>
-            <p className={styles.date}>{news.webPublicationDate}</p>
+            <p className={styles.date}>
+              {iconCalendar} {news.webPublicationDate}
+            </p>
             <h2>{news.webTitle}</h2>
             <h4>{news.fields.headline}</h4>
             <hr className={styles.divider} />
@@ -35,6 +44,8 @@ function Article({ news }) {
           </article>
         </article>
       </main>
+
+      <ScrollToTop />
     </div>
   );
 }

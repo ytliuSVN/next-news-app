@@ -6,6 +6,7 @@ import axios from 'axios';
 import Loader from '../components/Loader/Loader';
 import Card from '../components/Card/Card';
 import styles from '../styles/Home.module.scss';
+import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 
 function Home() {
   const { publicRuntimeConfig } = getConfig();
@@ -124,6 +125,8 @@ function Home() {
           </section>
         </main>
       )}
+
+      <ScrollToTop />
     </div>
   );
 }
