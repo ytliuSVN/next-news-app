@@ -58,6 +58,32 @@ function Home() {
       });
   };
 
+  const sectionCards = (section) => {
+    return (
+      <section className={styles.grid_wrap}>
+        <div className={styles.grid}>
+          {section.map((item) => (
+            <Link
+              key={item.id}
+              href={{
+                pathname: '/article/',
+                query: { id: item.id },
+              }}
+            >
+              <a>
+                <Card
+                  webTitle={item.webTitle}
+                  headline={item.fields.headline}
+                  thumbnail={item.fields.thumbnail}
+                />
+              </a>
+            </Link>
+          ))}
+        </div>
+      </section>
+    );
+  };
+
   return (
     <div className='container'>
       <Head>
@@ -74,73 +100,13 @@ function Home() {
           <section></section>
 
           <h2>Sports</h2>
-          <section className={styles.grid_wrap}>
-            <div className={styles.grid}>
-              {sport.map((item) => (
-                <Link
-                  key={item.id}
-                  href={{
-                    pathname: '/article/',
-                    query: { id: item.id },
-                  }}
-                >
-                  <a>
-                    <Card
-                      webTitle={item.webTitle}
-                      headline={item.fields.headline}
-                      thumbnail={item.fields.thumbnail}
-                    />
-                  </a>
-                </Link>
-              ))}
-            </div>
-          </section>
+          {sectionCards(sport)}
 
           <h2>Culture</h2>
-          <section className={styles.grid_wrap}>
-            <div className={styles.grid}>
-              {culture.map((item) => (
-                <Link
-                  key={item.id}
-                  href={{
-                    pathname: '/article/',
-                    query: { id: item.id },
-                  }}
-                >
-                  <a>
-                    <Card
-                      webTitle={item.webTitle}
-                      headline={item.fields.headline}
-                      thumbnail={item.fields.thumbnail}
-                    />
-                  </a>
-                </Link>
-              ))}
-            </div>
-          </section>
+          {sectionCards(culture)}
 
           <h2>Lifestyle</h2>
-          <section className={styles.grid_wrap}>
-            <div className={styles.grid}>
-              {lifeStyle.map((item) => (
-                <Link
-                  key={item.id}
-                  href={{
-                    pathname: '/article/',
-                    query: { id: item.id },
-                  }}
-                >
-                  <a>
-                    <Card
-                      webTitle={item.webTitle}
-                      headline={item.fields.headline}
-                      thumbnail={item.fields.thumbnail}
-                    />
-                  </a>
-                </Link>
-              ))}
-            </div>
-          </section>
+          {sectionCards(lifeStyle)}
         </main>
       )}
 
