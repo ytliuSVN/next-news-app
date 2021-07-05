@@ -9,12 +9,13 @@
     text-decoration: none;
     border-radius: 50%;
     transition: all 0.3s ease;
+    cursor: pointer;
 
     &:hover {
-        background: rgba(128, 19, 190, 0.9);
-    }
-    &:hover .icon {
-        top: 5px;
+        background: rgba(187, 143, 221, 0.9);
+        .icon {
+            top: 5px;
+        }
     }
 }
 

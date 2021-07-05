@@ -4,22 +4,66 @@
     margin: 0;
     max-width: 540px;
     width: 100%;
+    box-shadow: -1px 3px 17px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    background-color: #d32f2f;
+
+    &:hover > .figcaption {
+        background: rgba(0, 0, 0, 0.6);
+        transition: all 0.2s ease;
+    }
 
     .figure_img {
         object-fit: fill;
         width: 100%;
-        height: auto;
         max-width: 540px;
-        max-height: 423px;
+        height: 347px;
     }
 
     .figcaption {
         display: block;
         position: absolute;
         left: 0;
-        bottom: 5px;
+        bottom: 4px;
         right: 0;
         color: white;
-        background-color: rgba(85, 6, 158, 0.685);
+        background-color: rgba(85, 6, 158, 0.686);
+        padding-left: 10px;
+        padding-right: 10px;
+        font-style: normal;
+
+        .webTitle {
+            margin: 0;
+            padding: 10px 0px;
+
+            h3 {
+                font-weight: bold;
+                font-size: 20px;
+                line-height: 29px;
+                letter-spacing: 0.07px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                margin: 0;
+            }
+        }
+
+        .headline {
+            width: 100%;
+            padding-bottom: 15px;
+
+            p {
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 20px;
+                letter-spacing: 0.1px;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                margin: 0;
+            }
+        }
     }
 }

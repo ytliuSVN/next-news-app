@@ -6,14 +6,16 @@ function Card() {
       <figure className={styles.figure}>
         <img
           className={styles.figure_img}
-          src='http://placekitten.com/500/300'
+          src='https://via.placeholder.com/500x300'
         />
         <figcaption className={styles.figcaption}>
-          <h3>Sky News to launch dedicated regional Australia channel</h3>
-          <p>
-            I suppose if we couldn't laugh at things that don't make sense, we
-            couldn't react to a lot of life.
-          </p>
+          <div className={styles.webTitle}>
+            <h3>webTitle</h3>
+          </div>
+
+          <div className={styles.headline}>
+            <p>headline</p>
+          </div>
         </figcaption>
       </figure>
     </>

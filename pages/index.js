@@ -74,8 +74,15 @@ function Home() {
           <section>{/* <Card /> */}</section>
 
           <h2>Sports</h2>
-          <section>
-            {sport.map((item) => (
+          <section class={styles.grid_wrap}>
+            <div class={styles.grid}>
+              <div><Card /></div>
+              <div><Card /></div>
+              <div><Card /></div>
+            </div>
+          </section>
+
+          {/* {sport.map((item) => (
               <Link
                 key={item.id}
                 href={{
@@ -87,8 +94,7 @@ function Home() {
                   <h3>{item.webTitle}</h3>
                 </a>
               </Link>
-            ))}
-          </section>
+            ))} */}
 
           <h2>Culture</h2>
           <section>
