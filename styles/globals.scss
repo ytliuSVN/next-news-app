@@ -103,3 +103,17 @@ main {
     resize: both;
     overflow: auto;
 }
+
+/* Change nprogress bar color */
+#nprogress .bar {
+    background: #00e1ff !important;
+}
+
+#nprogress .peg {
+    box-shadow: 0 0 10px #00e1ff, 0 0 5px #00e1ff;
+}
+
+#nprogress .spinner-icon {
+    border-top-color: #00e1ff;
+    border-left-color: #00e1ff;
+}
