@@ -1,6 +1,6 @@
 import styles from './Loader.module.scss';
 
-const Loader = () => {
+function Loader() {
   const spinning = () => (
     <div className={styles.spinning}>
       <div className={styles.upper_circle}></div>
@@ -24,6 +24,6 @@ const Loader = () => {
   });
 
   return <div className={styles.container}>{buildSpinner}</div>;
-};
+}
 
 export default Loader;

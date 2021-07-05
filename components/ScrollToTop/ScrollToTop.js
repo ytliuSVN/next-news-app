@@ -3,7 +3,7 @@ import styles from './ScrollToTop.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
-export default function ScrollToTop() {
+function ScrollToTop() {
   const arrow = <FontAwesomeIcon icon={faChevronUp} color='#fff' className={styles.icon} />;
 
   const [isVisible, setIsVisible] = useState(false);
@@ -40,3 +40,5 @@ export default function ScrollToTop() {
     )
   );
 }
+
+export default ScrollToTop;

@@ -105,15 +105,27 @@ main {
 }
 
 /* Change nprogress bar color */
-#nprogress .bar {
-    background: #00e1ff !important;
+$nprogress-color: #00e1ff;
+#nprogress {
+    .bar {
+        background: $nprogress-color !important;
+    }
+    .peg {
+        box-shadow: 0 0 10px $nprogress-color, 0 0 5px $nprogress-color;
+    }
+    .spinner-icon {
+        border-top-color: $nprogress-color;
+        border-left-color: $nprogress-color;
+    }
 }
 
-#nprogress .peg {
-    box-shadow: 0 0 10px #00e1ff, 0 0 5px #00e1ff;
+$selection-color: #b951ff;
+::-moz-selection {
+    background: $selection-color;
+    color: white;
 }
 
-#nprogress .spinner-icon {
-    border-top-color: #00e1ff;
-    border-left-color: #00e1ff;
+::selection {
+    background: $selection-color;
+    color: white;
 }
