@@ -74,8 +74,8 @@ function Home() {
           <section></section>
 
           <h2>Sports</h2>
-          <section class={styles.grid_wrap}>
-            <div class={styles.grid}>
+          <section className={styles.grid_wrap}>
+            <div className={styles.grid}>
               {sport.map((item) => (
                 <Link
                   key={item.id}
@@ -84,50 +84,62 @@ function Home() {
                     query: { id: item.id },
                   }}
                 >
-                  <>
+                  <a>
                     <Card
                       webTitle={item.webTitle}
                       headline={item.fields.headline}
                       thumbnail={item.fields.thumbnail}
                     />
-                  </>
+                  </a>
                 </Link>
               ))}
             </div>
           </section>
 
           <h2>Culture</h2>
-          <section>
-            {culture.map((item) => (
-              <Link
-                key={item.id}
-                href={{
-                  pathname: '/article/',
-                  query: { id: item.id },
-                }}
-              >
-                <a>
-                  <h3>{item.webTitle}</h3>
-                </a>
-              </Link>
-            ))}
+          <section className={styles.grid_wrap}>
+            <div className={styles.grid}>
+              {culture.map((item) => (
+                <Link
+                  key={item.id}
+                  href={{
+                    pathname: '/article/',
+                    query: { id: item.id },
+                  }}
+                >
+                  <a>
+                    <Card
+                      webTitle={item.webTitle}
+                      headline={item.fields.headline}
+                      thumbnail={item.fields.thumbnail}
+                    />
+                  </a>
+                </Link>
+              ))}
+            </div>
           </section>
 
-          <h2>Life & Style</h2>
-          <section>
-            {lifeStyle.map((item) => (
-              <Link
-                key={item.id}
-                href={{
-                  pathname: '/article/',
-                  query: { id: item.id },
-                }}
-              >
-                <a>
-                  <h3>{item.webTitle}</h3>
-                </a>
-              </Link>
-            ))}
+          <h2>Lifestyle</h2>
+          <section className={styles.grid_wrap}>
+            <div className={styles.grid}>
+              {lifeStyle.map((item) => (
+                <Link
+                  key={item.id}
+                  href={{
+                    pathname: '/article/',
+                    query: { id: item.id },
+                  }}
+                >
+                  <a>
+                    <Card
+                      webTitle={item.webTitle}
+                      headline={item.fields.headline}
+                      thumbnail={item.fields.thumbnail}
+                    />
+                  </a>
+                </Link>
+              ))}
+            </div>
           </section>
         </main>
       )}
