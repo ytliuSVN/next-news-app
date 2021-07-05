@@ -75,6 +75,7 @@ function Home() {
                   webTitle={item.webTitle}
                   headline={item.fields.headline}
                   thumbnail={item.fields.thumbnail}
+                  bgColor='#d32f2f'
                 />
               </a>
             </Link>

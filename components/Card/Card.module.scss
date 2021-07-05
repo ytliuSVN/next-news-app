@@ -11,6 +11,10 @@
     &:hover > .figcaption {
         background-color: rgba(0, 0, 0, 0.8);
         transition: all 0.2s ease;
+
+        h3 {
+            text-decoration: underline;
+        }
     }
 
     .figure_img {
@@ -66,4 +70,9 @@
             }
         }
     }
+}
+
+.baseline {
+    background-color: #d32f2f;
+    height: 3px;
 }

@@ -1,6 +1,6 @@
 import styles from './Card.module.scss';
 
-function Card({ webTitle, headline, thumbnail }) {
+function Card({ webTitle, headline, thumbnail, bgColor }) {
   return (
     <>
       <figure className={styles.figure}>
@@ -18,6 +18,10 @@ function Card({ webTitle, headline, thumbnail }) {
           </div>
         </figcaption>
       </figure>
+      <div
+        className={styles.baseline}
+        style={{ background: `${bgColor || '#d32f2f'}` }}
+      ></div>
     </>
   );
 }
