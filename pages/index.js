@@ -71,30 +71,30 @@ function Home() {
       ) : (
         <main>
           <h1>Top Stories</h1>
-          <section>{/* <Card /> */}</section>
+          <section></section>
 
           <h2>Sports</h2>
           <section class={styles.grid_wrap}>
             <div class={styles.grid}>
-              <div><Card /></div>
-              <div><Card /></div>
-              <div><Card /></div>
+              {sport.map((item) => (
+                <Link
+                  key={item.id}
+                  href={{
+                    pathname: '/article/',
+                    query: { id: item.id },
+                  }}
+                >
+                  <>
+                    <Card
+                      webTitle={item.webTitle}
+                      headline={item.fields.headline}
+                      thumbnail={item.fields.thumbnail}
+                    />
+                  </>
+                </Link>
+              ))}
             </div>
           </section>
-
-          {/* {sport.map((item) => (
-              <Link
-                key={item.id}
-                href={{
-                  pathname: '/article/',
-                  query: { id: item.id },
-                }}
-              >
-                <a>
-                  <h3>{item.webTitle}</h3>
-                </a>
-              </Link>
-            ))} */}
 
           <h2>Culture</h2>
           <section>
