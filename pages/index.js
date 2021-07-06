@@ -5,6 +5,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import Loader from '../components/Loader/Loader';
 import Card from '../components/Card/Card';
+import Button from '../components/Button/Button';
 import styles from '../styles/Home.module.scss';
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 
@@ -114,7 +115,17 @@ function Home() {
         </div>
       ) : (
         <main>
-          <h1>Top Stories</h1>
+          <div className={styles.heading}>
+            <h1>Top Stories</h1>
+            <div className={styles.toolkit}>
+              <Link href='/bookmarks'>
+                <a>
+                  <Button>View Bookmark</Button>
+                </a>
+              </Link>
+            </div>
+          </div>
+
           {sectionTopStory(news)}
 
           <h2>Sports</h2>

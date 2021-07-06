@@ -1,20 +1,3 @@
-$minColWidth: 15rem;
-$gridGap: 30px;
-
-.grid_wrap {
-    margin: 30px 0;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax($minColWidth, 1fr));
-    grid-gap: $gridGap;
-
-    & + .grid {
-        margin-top: $gridGap;
-    }
-}
-
 .heading {
     display: flex;
     justify-content: space-between;
@@ -29,10 +12,6 @@ $gridGap: 30px;
 }
 
 @media (max-width: 600px) {
-    .grid_wrap {
-        margin: 2rem 0;
-    }
-
     .heading {
         display: flex;
         flex-direction: column;
