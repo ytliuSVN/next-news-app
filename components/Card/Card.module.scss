@@ -35,6 +35,7 @@
         padding-left: 10px;
         padding-right: 10px;
         font-style: normal;
+        height: 135px;
 
         .webTitle {
             margin: 0;
@@ -55,7 +56,7 @@
 
         .headline {
             width: 100%;
-            padding-bottom: 15px;
+            padding-bottom: 10px;
 
             p {
                 font-weight: normal;
@@ -63,7 +64,7 @@
                 line-height: 20px;
                 letter-spacing: 0.1px;
                 display: -webkit-box;
-                -webkit-line-clamp: 3;
+                -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 margin: 0;

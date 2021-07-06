@@ -6,7 +6,10 @@ function Card({ webTitle, headline, thumbnail, bgColor }) {
       <figure className={styles.figure}>
         <img
           className={styles.figure_img}
-          src={thumbnail || 'https://via.placeholder.com/500x300'}
+          src={
+            thumbnail ||
+            'https://via.placeholder.com/1000x1000/5e0099/bb8fdde6?text=KaiOS'
+          }
         />
         <figcaption className={styles.figcaption}>
           <div className={styles.webTitle}>
