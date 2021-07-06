@@ -2,7 +2,7 @@ import styles from './Card.module.scss';
 
 function Card({ webTitle, headline, thumbnail, bgColor }) {
   return (
-    <>
+    <div className={styles.wrapper}>
       <figure className={styles.figure}>
         <img
           className={styles.figure_img}
@@ -25,7 +25,7 @@ function Card({ webTitle, headline, thumbnail, bgColor }) {
         className={styles.baseline}
         style={{ background: `${bgColor || '#d32f2f'}` }}
       ></div>
-    </>
+    </div>
   );
 }
 

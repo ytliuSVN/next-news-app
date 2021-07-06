@@ -64,19 +64,34 @@ function Home() {
 
   // combo grid layout
   const sectionTopStory = (content) => {
-    // const primary = content.slice(0, 5);
+    const primary = content.slice(0, 1);
     const secondary = content.slice(-3);
+    const tertiary = content.slice(1, 3);
+    const quaternary = content.slice(3, 5);
 
     return (
       <>
-        {/* <div>primary</div> */}
+        {/* <section className={styles.grid_wrap}>
+          <div className={styles.grid}>
+            {sectionCards(primary, '#388E3C')}
+            <div>
+              <div className={styles.grid}>
+                <span>4-col 1</span>
+                <span>4-col 2</span>
+                <span>4-col 3</span>
+                <span>4-col 4</span>
+              </div>
+            </div>
+          </div>
+        </section> */}
+
         {sectionCards(secondary)}
       </>
     );
   };
 
   // 3-column layout grid
-  const sectionCards = (content) => {
+  const sectionCards = (content, bgColor) => {
     return (
       <section className={styles.grid_wrap}>
         <div className={styles.grid}>
@@ -93,7 +108,7 @@ function Home() {
                   webTitle={item.webTitle}
                   headline={item.fields.headline}
                   thumbnail={item.fields.thumbnail}
-                  bgColor='#d32f2f'
+                  bgColor={bgColor}
                 />
               </a>
             </Link>
@@ -114,7 +129,7 @@ function Home() {
           <Loader />
         </div>
       ) : (
-        <main>
+        <main className={styles.main}>
           <div className={styles.heading}>
             <h1>Top Stories</h1>
             <div className={styles.toolkit}>
@@ -129,13 +144,13 @@ function Home() {
           {sectionTopStory(news)}
 
           <h2>Sports</h2>
-          {sectionCards(sport)}
+          {sectionCards(sport, '#d32f2f')}
 
           <h2>Culture</h2>
-          {sectionCards(culture)}
+          {sectionCards(culture, '#FFC107')}
 
           <h2>Lifestyle</h2>
-          {sectionCards(lifeStyle)}
+          {sectionCards(lifeStyle, '#388E3C')}
         </main>
       )}
 
