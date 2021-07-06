@@ -1,4 +1,8 @@
-<div align="left">
+<p align="center">
+  <img src="./public/assets/news.svg" alt="KaiOS News" width="125" />
+</p>
+
+<div align="center">
 
 ![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
@@ -8,8 +12,8 @@
 # NextJS News App
 
 A News App built using NextJS, utilizing [Guardian API](https://open-platform.theguardian.com/) to fetch the article data.
-## User Stories
 
+> **NOTE:** This is ***not*** an official website, just for experiment purpose.
 
 ## App Details
 
