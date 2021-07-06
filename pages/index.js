@@ -11,7 +11,7 @@ import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 function Home() {
   const { publicRuntimeConfig } = getConfig();
   const [isLoading, setIsLoading] = useState(true);
-
+  const [news, seTopStory] = useState([]);
   const [sport, setSport] = useState([]);
   const [culture, setCulture] = useState([]);
   const [lifeStyle, setLifeStyle] = useState([]);
@@ -23,30 +23,33 @@ function Home() {
   const fetchNews = () => {
     setIsLoading(true); //starts spinner
 
-    // Top story section
-    // const baseUrl_Top = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=8&section=news&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
-
     // Category based news section
     const baseUrl_Sport = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&section=sport&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
     const baseUrl_Culture = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&section=culture&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
     const baseUrl_LifeStyle = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&section=lifeandstyle&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
 
+    // Top story section
+    const baseUrl_TopStory = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=8&section=news&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
+
     const getSport = axios.get(baseUrl_Sport);
     const getCulture = axios.get(baseUrl_Culture);
     const getLifeStyle = axios.get(baseUrl_LifeStyle);
+    const getTopStory = axios.get(baseUrl_TopStory);
 
     axios
-      .all([getSport, getCulture, getLifeStyle])
+      .all([getSport, getCulture, getLifeStyle, getTopStory])
       .then(
         axios.spread((...allNews) => {
           // console.log(allNews)
           const allSport = allNews[0].data.response.results;
           const allCulture = allNews[1].data.response.results;
           const allLifeStyle = allNews[2].data.response.results;
+          const getTopStory = allNews[3].data.response.results;
 
           setSport(allSport);
           setCulture(allCulture);
           setLifeStyle(allLifeStyle);
+          seTopStory(getTopStory);
         })
       )
       .catch(function (error) {
@@ -58,11 +61,25 @@ function Home() {
       });
   };
 
-  const sectionCards = (section) => {
+  // combo grid layout
+  const sectionTopStory = (content) => {
+    // const primary = content.slice(0, 5);
+    const secondary = content.slice(-3);
+
+    return (
+      <>
+        {/* <div>primary</div> */}
+        {sectionCards(secondary)}
+      </>
+    );
+  };
+
+  // 3-column layout grid
+  const sectionCards = (content) => {
     return (
       <section className={styles.grid_wrap}>
         <div className={styles.grid}>
-          {section.map((item) => (
+          {content.map((item) => (
             <Link
               key={item.id}
               href={{
@@ -98,7 +115,7 @@ function Home() {
       ) : (
         <main>
           <h1>Top Stories</h1>
-          <section></section>
+          {sectionTopStory(news)}
 
           <h2>Sports</h2>
           {sectionCards(sport)}
