@@ -71,7 +71,7 @@ function Home() {
 
     return (
       <>
-        {/* <section className={styles.grid_wrap}>
+        <section className={styles.grid_wrap}>
           <div className={styles.grid}>
             {sectionCards(primary, '#388E3C')}
             <div>
@@ -83,7 +83,7 @@ function Home() {
               </div>
             </div>
           </div>
-        </section> */}
+        </section>
 
         {sectionCards(secondary)}
       </>
