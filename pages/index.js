@@ -6,6 +6,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import Loader from '../components/Loader/Loader';
 import Card from '../components/Card/Card';
+import TinyCard from '../components/TinyCard/TinyCard';
 import Button from '../components/Button/Button';
 import styles from '../styles/Home.module.scss';
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
@@ -78,10 +79,8 @@ function Home() {
             {sectionCards(primary, '#388E3C')}
             <div>
               <div className={styles.grid}>
-                <span>4-col 1</span>
-                <span>4-col 2</span>
-                <span>4-col 3</span>
-                <span>4-col 4</span>
+                {titleOnlyCards(tertiary, ['#D32F2F', '#FFC107'])}
+                {titleOnlyCards(quaternary, ['#2196F3', '#388E3C'])}
               </div>
             </div>
           </div>
@@ -89,6 +88,29 @@ function Home() {
 
         {sectionCards(secondary)}
       </>
+    );
+  };
+
+  // Only title news card
+  const titleOnlyCards = (content, bgColor) => {
+    return (
+      <section className={styles.grid_wrap}>
+        <div className={styles.grid}>
+          {content.map((item, idx) => (
+            <Link
+              key={item.id}
+              href={{
+                pathname: '/article/',
+                query: { id: item.id },
+              }}
+            >
+              <a>
+                <TinyCard webTitle={item.webTitle} bgColor={bgColor[idx]} />
+              </a>
+            </Link>
+          ))}
+        </div>
+      </section>
     );
   };
 

@@ -1,0 +1,43 @@
+.wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    max-width: 540px;
+    width: 100%;
+    cursor: pointer;
+    background: linear-gradient(to bottom left, rgb(136, 43, 212) 20%, rgb(188, 121, 250) 100%);
+    box-shadow: 0px 3px 16px -5px rgba(0, 0, 0, 0.48);
+    color: white;
+
+    &:hover {
+        background: linear-gradient(to bottom left, rgba(33, 8, 53, 0.9) 20%, rgba(42, 19, 63, 0.9) 100%);
+    }
+}
+
+.webTitle {
+    height: 138px;
+    margin: 10px;
+
+    h3 {
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 27px;
+        letter-spacing: 0.063px;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin: 0;
+    }
+}
+
+.baseline {
+    background-color: #d32f2f;
+    height: 3px;
+}
+
+@media (max-width: 600px) {
+    .webTitle {
+        height: 108px;
+    }
+}
