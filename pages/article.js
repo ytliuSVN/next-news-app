@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Head from 'next/head';
 import getConfig from 'next/config';
 import Image from 'next/image';
@@ -5,8 +6,16 @@ import styles from '../styles/Article.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
-import ToggleButton from '../components/ToggleButton/ToggleButton';
+import Button from '../components/Button/Button';
 function Article({ news }) {
+  const ADD_BOOKMARK = 'Add Bookmark';
+  const REMOVE_BOOKMARK = 'Remove Bookmark';
+  const [buttonText, setButtonText] = useState(ADD_BOOKMARK);
+
+  const handleClick = () => {
+    setButtonText(buttonText === ADD_BOOKMARK ? REMOVE_BOOKMARK : ADD_BOOKMARK);
+  };
+
   const iconCalendar = (
     <FontAwesomeIcon icon={faCalendarAlt} color='#000000de' />
   );
@@ -20,7 +29,7 @@ function Article({ news }) {
       <main>
         <article className={styles.wrapper}>
           <article className={styles.content_wrapper}>
-            <ToggleButton>Add Bookmark</ToggleButton>
+            <Button onClick={handleClick}>{buttonText}</Button>
             <p className={styles.date}>
               {iconCalendar} {news.webPublicationDate}
             </p>
