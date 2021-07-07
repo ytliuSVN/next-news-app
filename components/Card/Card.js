@@ -1,16 +1,22 @@
 import styles from './Card.module.scss';
 
 function Card({ webTitle, headline, thumbnail, bgColor }) {
+  const blankCard = () => {
+    return (
+      <div className={styles.overlay}>
+        <div className={styles.logo}></div>
+      </div>
+    );
+  };
+
   return (
     <div className={styles.wrapper}>
       <figure className={styles.figure}>
-        <img
-          className={styles.figure_img}
-          src={
-            thumbnail ||
-            'https://via.placeholder.com/1000x1000/5e0099/bb8fdde6?text=KaiOS'
-          }
-        />
+        {thumbnail ? (
+          <img className={styles.figure_img} src={thumbnail} />
+        ) : (
+          blankCard()
+        )}
         <figcaption className={styles.figcaption}>
           <div className={styles.webTitle}>
             <h3>{webTitle}</h3>
