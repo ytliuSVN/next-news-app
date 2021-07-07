@@ -5,7 +5,7 @@ import styles from '../styles/Article.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
-import Button from '../components/Button/Button';
+import ToggleButton from '../components/ToggleButton/ToggleButton';
 function Article({ news }) {
   const iconCalendar = (
     <FontAwesomeIcon icon={faCalendarAlt} color='#000000de' />
@@ -20,7 +20,7 @@ function Article({ news }) {
       <main>
         <article className={styles.wrapper}>
           <article className={styles.content_wrapper}>
-            <Button>Add Bookmark</Button>
+            <ToggleButton>Add Bookmark</ToggleButton>
             <p className={styles.date}>
               {iconCalendar} {news.webPublicationDate}
             </p>

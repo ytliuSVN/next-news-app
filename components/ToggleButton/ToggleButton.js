@@ -1,6 +1,6 @@
-import styles from './Button.module.scss';
+import styles from './ToggleButton.module.scss';
 
-function Button({ children, onClick }) {
+function ToggleButton({ children, onClick }) {
   return (
     <div className={styles.container}>
       <div className={styles.icon}></div>
@@ -11,4 +11,4 @@ function Button({ children, onClick }) {
   );
 }
 
-export default Button;
+export default ToggleButton;

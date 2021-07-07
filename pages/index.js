@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import getConfig from 'next/config';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -10,6 +11,7 @@ import styles from '../styles/Home.module.scss';
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 
 function Home() {
+  const router = useRouter();
   const { publicRuntimeConfig } = getConfig();
   const [isLoading, setIsLoading] = useState(true);
   const [news, seTopStory] = useState([]);
@@ -133,11 +135,13 @@ function Home() {
           <div className={styles.heading}>
             <h1>Top Stories</h1>
             <div className={styles.toolkit}>
-              <Link href='/bookmarks'>
-                <a>
-                  <Button>View Bookmark</Button>
-                </a>
-              </Link>
+              <Button
+                onClick={() => {
+                  router.push('/bookmarks');
+                }}
+              >
+                View Bookmark
+              </Button>
             </div>
           </div>
 
