@@ -4,12 +4,8 @@ import getConfig from 'next/config';
 import Head from 'next/head';
 import Link from 'next/link';
 import axios from 'axios';
-import Loader from '../components/Loader/Loader';
-import Card from '../components/Card/Card';
-import TinyCard from '../components/TinyCard/TinyCard';
-import Button from '../components/Button/Button';
+import { Loader, Card, TinyCard, Button, ScrollToTop } from '../components';
 import styles from '../styles/Home.module.scss';
-import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 
 function Home() {
   const router = useRouter();

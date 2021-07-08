@@ -5,9 +5,8 @@ import Image from 'next/image';
 import styles from '../styles/Article.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
-import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
-import Button from '../components/Button/Button';
-// import Toast from '../components/Toast/Toast';
+import { Toast, Button, ScrollToTop } from '../components';
+
 function Article({ news }) {
   const ADD_BOOKMARK = 'Add Bookmark';
   const REMOVE_BOOKMARK = 'Remove Bookmark';
