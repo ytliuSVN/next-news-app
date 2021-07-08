@@ -1,25 +1,26 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.scss';
+import SearchBar from '../SearchBar/SearchBar';
 
 function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link href='/'>
-          <a>
-            <span>
-              <Image
-                src='/assets/KaiOS-Logo.svg'
-                alt='KaiOS Logo'
-                width={142}
-                height={56}
-              />
-            </span>
-          </a>
-        </Link>
+        <div className={styles.logo}>
+          <Link href='/'>
+            <Image
+              src='/assets/KaiOS-Logo.svg'
+              alt='KaiOS Logo'
+              width={142}
+              height={56}
+            />
+          </Link>
+        </div>
+        <div className={styles.search}>
+          <SearchBar />
+        </div>
       </div>
-      <div className='header_search'></div>
     </header>
   );
 }

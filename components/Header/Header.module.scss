@@ -8,10 +8,35 @@ $primary-color: #6f02b5;
     top: 0;
 
     .container {
+        display: flex;
         margin: 0 auto;
         position: relative;
+        padding-top: 10px;
         padding-left: 15px;
         padding-right: 15px;
         max-width: 1140px;
+        justify-content: space-between;
+
+        .logo {
+            cursor: pointer;
+            padding-bottom: 5px;
+        }
+
+        .search {
+            display: flex;
+            align-items: flex-end;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .logo {
+        width: 30%;
     }
 }
