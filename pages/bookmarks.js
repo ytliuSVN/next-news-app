@@ -2,6 +2,7 @@ import Head from 'next/head';
 import getConfig from 'next/config';
 import Image from 'next/image';
 import Link from 'next/link';
+// import Loader from '../components/Loader/Loader';
 import styles from '../styles/Bookmarks.module.scss';
 
 function Bookmarks() {
@@ -11,7 +12,7 @@ function Bookmarks() {
         <title>KaiOS | Bookmarks</title>
       </Head>
 
-      <main>
+      <main className={styles.main}>
         <div className={styles.heading}>
           <h1>All Bookmark</h1>
           <div className={styles.toolkit}></div>
