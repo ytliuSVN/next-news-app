@@ -1,0 +1,41 @@
+.toast {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    height: 32px;
+    color: white;
+
+    &.saved {
+        background: #388e3c;
+    }
+    &.removed {
+        background: #d32f2f;
+    }
+
+    .icon {
+        display: inline-block;
+        width: 10.5px;
+        height: 13.5px;
+        margin-right: 5px;
+
+        &.saved_icon {
+            background-image: url("../../public/assets/bookmarkon-icon@2x.svg");
+        }
+
+        &.removed_icon {
+            background-image: url("../../public/assets/bookmarkoff-icon@2x.svg");
+        }
+    }
+
+    .text {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 32px;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        color: #ffffff;
+    }
+}

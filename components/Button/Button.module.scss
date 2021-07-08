@@ -17,29 +17,29 @@ $primary-color: #6f02b5;
         transition: all 0.2s ease;
         cursor: pointer;
     }
-}
 
-.icon {
-    display: flex;
-    align-items: center;
-    background-image: url("../../public/assets/bookmarkon-icon@2x.svg");
-    width: 10.5px;
-    height: 13.5px;
-    margin-right: 5px;
-}
+    .icon {
+        display: flex;
+        align-items: center;
+        background-image: url("../../public/assets/bookmarkon-icon@2x.svg");
+        width: 10.5px;
+        height: 13.5px;
+        margin-right: 5px;
+    }
 
-.btn {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    border: 0;
-    padding: 0;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 22px;
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
-    color: #ffffff;
-    cursor: pointer;
+    .btn {
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 22px;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        color: #ffffff;
+        cursor: pointer;
+    }
 }

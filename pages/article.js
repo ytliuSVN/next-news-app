@@ -7,13 +7,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 import Button from '../components/Button/Button';
+// import Toast from '../components/Toast/Toast';
 function Article({ news }) {
   const ADD_BOOKMARK = 'Add Bookmark';
   const REMOVE_BOOKMARK = 'Remove Bookmark';
+
+  const [bookmark, setBookmark] = useState(false);
   const [buttonText, setButtonText] = useState(ADD_BOOKMARK);
 
   const handleClick = () => {
-    setButtonText(buttonText === ADD_BOOKMARK ? REMOVE_BOOKMARK : ADD_BOOKMARK);
+    setBookmark(!bookmark);
+    setButtonText(!bookmark ? REMOVE_BOOKMARK : ADD_BOOKMARK);
   };
 
   const iconCalendar = (
@@ -54,6 +58,7 @@ function Article({ news }) {
         </article>
       </main>
 
+      {/* <Toast bookmark={bookmark} /> */}
       <ScrollToTop />
     </div>
   );

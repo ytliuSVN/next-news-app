@@ -28,9 +28,10 @@
 }
 
 .divider {
-    mix-blend-mode: normal;
-    opacity: 0.2;
-    border: 1px solid #979797;
+    opacity: 0.5;
+    border: 0;
+    height: 0;
+    border-top: 1px solid #979797;
 }
 
 .content {
