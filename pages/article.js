@@ -46,12 +46,19 @@ function Article({ news }) {
           </article>
 
           <article className={styles.media_wrapper}>
-            <Image
-              src={news.fields.thumbnail}
-              alt='Article media'
-              width={500}
-              height={300}
-            />
+            {news.fields.thumbnail ? (
+              <Image
+                src={news.fields.thumbnail}
+                alt='Article media'
+                width={500}
+                height={300}
+              />
+            ) : (
+              <div className={styles.overlay}>
+                <div className={styles.logo}></div>
+              </div>
+            )}
+
             <p className={styles.figcaption}>{news.fields.headline}</p>
           </article>
         </article>
