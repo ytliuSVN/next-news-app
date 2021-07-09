@@ -1,4 +1,8 @@
 .toast {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -8,14 +12,14 @@
     color: white;
 
     &.saved {
-        background: #388e3c;
+        background: linear-gradient(to bottom, #388e3c 25%, #26752a 100%);
     }
+
     &.removed {
-        background: #d32f2f;
+        background: linear-gradient(to bottom, #d32f2f 25%, #c01a1a 100%);
     }
 
     .icon {
-        display: inline-block;
         width: 10.5px;
         height: 13.5px;
         margin-right: 5px;
