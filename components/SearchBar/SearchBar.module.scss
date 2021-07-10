@@ -6,7 +6,23 @@
     border-bottom: 3px solid #af8ed8;
 
     .searchInputs {
-        // display: none;
+        display: none;
+
+        &.active {
+            display: block;
+            width: 210px;
+            animation: fadeIn 0.2s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
 
         input {
             background: transparent;
@@ -37,7 +53,7 @@
         cursor: pointer;
 
         &:hover {
-            background: rgba(165, 127, 255, 0.3);
+            background: rgba(165, 127, 255, 0.2);
             transition: all 0.2s ease;
         }
 

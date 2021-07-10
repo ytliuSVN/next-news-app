@@ -6,6 +6,9 @@ import styles from './SearchBar.module.scss';
 function SearchBar() {
   const { publicRuntimeConfig } = getConfig();
 
+  const [expand, setExpand] = useState(false);
+  const [focused, setFocused] = useState(false);
+
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState([]);
@@ -13,6 +16,24 @@ function SearchBar() {
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
+  };
+
+  const keyUpHandler = () => {
+    if (!searchTerm) setExpand(false);
+  };
+
+  const onFocus = () => {
+    setFocused(true);
+    setExpand(true);
+  };
+
+  const onBlur = () => {
+    setFocused(false);
+    setExpand(false);
+  };
+
+  const clickHandler = () => {
+    setExpand(!expand);
   };
 
   /*
@@ -34,17 +55,22 @@ function SearchBar() {
   }, [searchTerm, page]);
   */
 
-  const clickHandler = () => {
-    // expanded with animation
-  };
-
   return (
     <div className={styles.search}>
-      <div className={styles.searchInputs}>
+      <div
+        className={
+          expand
+            ? `${styles.searchInputs} ${styles.active}`
+            : styles.searchInputs
+        }
+      >
         <input
           type='text'
           placeholder='Search all news'
           onChange={handleChange}
+          onKeyUp={keyUpHandler}
+          onFocus={onFocus}
+          onBlur={onBlur}
         />
       </div>
       <div className={styles.searchBtn} onClick={clickHandler}>
