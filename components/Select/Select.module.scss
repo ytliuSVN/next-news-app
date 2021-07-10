@@ -1,0 +1,22 @@
+.select_element {
+    width: 255px;
+    height: 45px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    letter-spacing: 0.09px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.87);
+    padding: 0 5px;
+    cursor: pointer;
+    background: transparent;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23212121' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 10px;
+}

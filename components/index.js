@@ -7,3 +7,4 @@ export { default as ScrollToTop } from './ScrollToTop/ScrollToTop';
 export { default as SearchBar } from './SearchBar/SearchBar';
 export { default as TinyCard } from './TinyCard/TinyCard';
 export { default as Toast } from './Toast/Toast';
+export { default as Select } from './Select/Select';
