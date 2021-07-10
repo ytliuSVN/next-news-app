@@ -6,6 +6,7 @@ import styles from './SearchBar.module.scss';
 function SearchBar() {
   const { publicRuntimeConfig } = getConfig();
 
+  const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -14,22 +15,24 @@ function SearchBar() {
     setSearchTerm(e.target.value);
   };
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   axios(
-  //     `${publicRuntimeConfig.GUARDIAN_API_URL}search?page=${page}&page-size=15&q=${searchTerm}&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`
-  //   )
-  //     .then((response) => {
-  //       console.log(response.data);
-  //     })
-  //     .catch((error) => {
-  //       setIsLoading(false);
-  //       console.log('Error getting news data: ' + error);
-  //     })
-  //     .finally(function () {
-  //       setIsLoading(false);
-  //     });
-  // }, [searchTerm]);
+  /*
+  useEffect(() => {
+    setIsLoading(true);
+    axios(
+      `${publicRuntimeConfig.GUARDIAN_API_URL}search?page=${page}&page-size=15&q=${searchTerm}&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`
+    )
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        console.log('Error getting news data: ' + error);
+      })
+      .finally(function () {
+        setIsLoading(false);
+      });
+  }, [searchTerm, page]);
+  */
 
   const clickHandler = () => {
     // expanded with animation
