@@ -12,9 +12,11 @@ function Article({ news }) {
   const REMOVE_BOOKMARK = 'Remove Bookmark';
 
   const [bookmark, setBookmark] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [buttonText, setButtonText] = useState(ADD_BOOKMARK);
 
   const handleClick = () => {
+    setVisible(true);
     setBookmark(!bookmark);
     setButtonText(!bookmark ? REMOVE_BOOKMARK : ADD_BOOKMARK);
   };
@@ -64,7 +66,7 @@ function Article({ news }) {
         </article>
       </main>
 
-      {/* <Toast bookmark={bookmark} /> */}
+      <Toast bookmark={bookmark} visible={visible} />
       <ScrollToTop />
     </div>
   );
