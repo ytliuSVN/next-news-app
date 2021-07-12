@@ -8,7 +8,7 @@ function Layout({ children }) {
 
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   const handleSearch = (e) => {
@@ -32,10 +32,18 @@ function Layout({ children }) {
       });
   }, [searchTerm, page]);
 
+  const searchResult = () => {
+    return (
+      <div className='container'>
+        <main>Search Result</main>
+      </div>
+    );
+  };
+
   return (
     <div className='content'>
       <Header onChange={handleSearch} searchTerm={searchTerm} />
-      {children}
+      {!searchTerm ? children : searchResult()}
       <Footer />
     </div>
   );
