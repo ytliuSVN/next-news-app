@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from './Header.module.scss';
 import { SearchBar } from '../index';
 
-function Header() {
+function Header(props) {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -20,7 +20,7 @@ function Header() {
           </Link>
         </div>
         <div className={styles.search}>
-          <SearchBar />
+          <SearchBar {...props} />
         </div>
       </div>
     </header>
