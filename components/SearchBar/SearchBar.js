@@ -21,7 +21,9 @@ function SearchBar(props) {
   };
 
   return (
-    <div className={styles.search}>
+    <div
+      className={expand ? `${styles.search} ${styles.expand}` : styles.search}
+    >
       <div
         className={
           expand
