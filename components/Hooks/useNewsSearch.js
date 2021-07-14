@@ -34,7 +34,7 @@ function useNewsSearch(searchTerm, page) {
         setNews((prevNews) => {
           return [...new Set([...prevNews, ...res.data.response.results])];
         });
-        setHasMore(res.data.response.length > 0);
+        setHasMore(res.data.response.results.length > 0);
         setLoading(false);
       })
       .catch((e) => {
