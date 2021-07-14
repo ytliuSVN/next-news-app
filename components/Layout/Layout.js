@@ -1,49 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import { useCallback, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import getConfig from 'next/config';
 import Link from 'next/link';
-import axios from 'axios';
 import { Header, Footer, Loader, Card, Button, ScrollToTop } from '../index';
 import styles from './Layout.module.scss';
+import useNewsSearch from '../Hooks/useNewsSearch';
 
 function Layout({ children }) {
   const router = useRouter();
-  const { publicRuntimeConfig } = getConfig();
-
-  const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
+  const { news, hasMore, loading, error } = useNewsSearch(searchTerm, page);
+  const observer = useRef();
+
+  const lastNewsElementRef = useCallback(
+    (node) => {
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          setPage((prevPage) => prevPage + 1);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading, hasMore]
+  );
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+    setPage(1);
   };
-
-  useEffect(() => {
-    setIsLoading(true);
-    axios(
-      `${publicRuntimeConfig.GUARDIAN_API_URL}search?page=${page}&page-size=15&q=${searchTerm}&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`
-    )
-      .then((response) => {
-        setData(response.data.response.results);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.log('Error getting news data: ' + error);
-      })
-      .finally(function () {
-        setIsLoading(false);
-      });
-  }, [searchTerm, page]);
 
   // 3-column layout grid
   const searchCards = (content, bgColor) => {
     return (
       <section className={styles.grid_wrap}>
         <div className={styles.grid}>
-          {content.map((item) => (
+          {content.map((item, idx) => (
             <Link
-              key={item.id}
+              key={idx}
               href={{
                 pathname: '/article/',
                 query: { id: item.id },
@@ -67,29 +62,31 @@ function Layout({ children }) {
   const searchResult = () => {
     return (
       <div className='container'>
-        {isLoading ? (
-          <div className='loader-container'>
-            <Loader />
-          </div>
-        ) : (
-          <main className={styles.main}>
-            <div className={styles.heading}>
-              <h1>Search Result</h1>
-              <div className={styles.toolkit}>
-                <Button
-                  onClick={() => {
-                    router.push('/bookmarks');
-                    setSearchTerm('');
-                  }}
-                >
-                  View Bookmark
-                </Button>
-              </div>
+        <main className={styles.main}>
+          <div className={styles.heading}>
+            <h1>Search Result</h1>
+            <div className={styles.toolkit}>
+              <Button
+                onClick={() => {
+                  router.push('/bookmarks');
+                  setSearchTerm('');
+                }}
+              >
+                View Bookmark
+              </Button>
             </div>
+          </div>
 
-            {searchCards(data, '#d32f2f')}
-          </main>
-        )}
+          {searchCards(news, '#d32f2f')}
+
+          {loading && (
+            <div className={styles.loading}>
+              <Loader />
+            </div>
+          )}
+          {/* {error && <p>Error!</p>} */}
+          <div ref={observer} />
+        </main>
         <ScrollToTop />
       </div>
     );

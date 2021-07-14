@@ -37,6 +37,13 @@ $gridGap: 30px;
         margin-top: 35px;
         margin-bottom: 15px;
     }
+
+    .loading {
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 @media (max-width: 600px) {
