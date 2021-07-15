@@ -37,45 +37,27 @@ function Layout({ children }) {
       <section className={styles.grid_wrap}>
         <div className={styles.grid}>
           {content.map((item, idx) => {
-            if (content.length === idx + 1) {
-              return (
-                <Link
-                  key={idx}
-                  href={{
-                    pathname: '/article/',
-                    query: { id: item.id },
-                  }}
+            return (
+              <Link
+                key={idx}
+                href={{
+                  pathname: '/article/',
+                  query: { id: item.id },
+                }}
+              >
+                <a
+                  onClick={() => setSearchTerm('')}
+                  ref={content.length === idx + 1 ? lastNewsElementRef : null}
                 >
-                  <a onClick={() => setSearchTerm('')} ref={lastNewsElementRef}>
-                    <Card
-                      webTitle={item.webTitle}
-                      headline={item.fields.headline}
-                      thumbnail={item.fields.thumbnail}
-                      bgColor={bgColor}
-                    />
-                  </a>
-                </Link>
-              );
-            } else {
-              return (
-                <Link
-                  key={idx}
-                  href={{
-                    pathname: '/article/',
-                    query: { id: item.id },
-                  }}
-                >
-                  <a onClick={() => setSearchTerm('')}>
-                    <Card
-                      webTitle={item.webTitle}
-                      headline={item.fields.headline}
-                      thumbnail={item.fields.thumbnail}
-                      bgColor={bgColor}
-                    />
-                  </a>
-                </Link>
-              );
-            }
+                  <Card
+                    webTitle={item.webTitle}
+                    headline={item.fields.headline}
+                    thumbnail={item.fields.thumbnail}
+                    bgColor={bgColor}
+                  />
+                </a>
+              </Link>
+            );
           })}
         </div>
       </section>
