@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import getConfig from 'next/config';
 
-function useComboFetch() {
+function useComboFetch(sorting) {
   const { publicRuntimeConfig } = getConfig();
 
   const [loading, setLoading] = useState(true);
@@ -17,12 +17,12 @@ function useComboFetch() {
     setError(false);
 
     // Top story
-    const baseUrl_News = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=8&section=news&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
+    const baseUrl_News = `${publicRuntimeConfig.GUARDIAN_API_URL}search?order-by=${sorting}&page-size=8&section=news&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
 
     // Category
-    const baseUrl_Sport = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&section=sport&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
-    const baseUrl_Culture = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&section=culture&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
-    const baseUrl_LifeStyle = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&section=lifeandstyle&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
+    const baseUrl_Sport = `${publicRuntimeConfig.GUARDIAN_API_URL}search?order-by=${sorting}&page-size=3&section=sport&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
+    const baseUrl_Culture = `${publicRuntimeConfig.GUARDIAN_API_URL}search?order-by=${sorting}&page-size=3&section=culture&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
+    const baseUrl_LifeStyle = `${publicRuntimeConfig.GUARDIAN_API_URL}search?order-by=${sorting}&page-size=3&section=lifeandstyle&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
 
     const getNews = axios.get(baseUrl_News);
     const getSport = axios.get(baseUrl_Sport);
@@ -50,7 +50,7 @@ function useComboFetch() {
       .catch((error) => {
         setError(true);
       });
-  }, []);
+  }, [sorting]);
 
   return { loading, error, news, sport, culture, lifeStyle };
 }

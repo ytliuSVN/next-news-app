@@ -1,7 +1,15 @@
 import { useCallback, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { Header, Footer, Loader, Card, Button, ScrollToTop } from '../index';
+import {
+  Header,
+  Footer,
+  Loader,
+  Card,
+  Button,
+  ScrollToTop,
+  Select,
+} from '../index';
 import styles from './Layout.module.scss';
 import useNewsSearch from '../Hooks/useNewsSearch';
 
@@ -9,7 +17,12 @@ function Layout({ children }) {
   const router = useRouter();
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
-  const { news, hasMore, loading, error } = useNewsSearch(searchTerm, page);
+  const [sorting, setSorting] = useState('newest');
+  const { news, hasMore, loading, error } = useNewsSearch(
+    searchTerm,
+    page,
+    sorting
+  );
   const observer = useRef();
 
   const lastNewsElementRef = useCallback(
@@ -29,6 +42,10 @@ function Layout({ children }) {
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
     setPage(1);
+  };
+
+  const handleSorting = (e) => {
+    setSorting(e.target.value);
   };
 
   // 3-column layout grid
@@ -79,6 +96,7 @@ function Layout({ children }) {
               >
                 View Bookmark
               </Button>
+              <Select onChange={handleSorting} orderBy={sorting} />
             </div>
           </div>
 

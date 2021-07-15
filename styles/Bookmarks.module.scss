@@ -3,11 +3,19 @@
     justify-content: space-between;
     flex-wrap: wrap;
 
-    h1,
+    h1 {
+        line-height: 49px;
+        margin: 0;
+    }
+
     .toolkit {
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-end;
+
+        Select {
+            margin-left: 22px;
+        }
     }
 }
 
@@ -43,6 +51,10 @@
 
             > * {
                 margin-top: 10px;
+            }
+
+            Select {
+                margin: 0;
             }
         }
     }

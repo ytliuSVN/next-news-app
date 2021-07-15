@@ -1,13 +1,23 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Loader, Card, TinyCard, Button, ScrollToTop, Select } from '../components';
+import {
+  Loader,
+  Card,
+  TinyCard,
+  Button,
+  ScrollToTop,
+  Select,
+} from '../components';
 import styles from '../styles/Home.module.scss';
 import useComboFetch from '../components/Hooks/useComboFetch';
 
 function Home() {
   const router = useRouter();
-  const { loading, error, news, sport, culture, lifeStyle } = useComboFetch();
+  const [sorting, setSorting] = useState('newest');
+  const { loading, error, news, sport, culture, lifeStyle } =
+    useComboFetch(sorting);
 
   // Combo grid layout
   const sectionTopStory = (content) => {
@@ -86,6 +96,10 @@ function Home() {
     );
   };
 
+  const handleSorting = (e) => {
+    setSorting(e.target.value);
+  };
+
   return (
     <div className='container'>
       <Head>
@@ -108,7 +122,7 @@ function Home() {
               >
                 View Bookmark
               </Button>
-              <Select />
+              <Select onChange={handleSorting} orderBy={sorting}/>
             </div>
           </div>
 

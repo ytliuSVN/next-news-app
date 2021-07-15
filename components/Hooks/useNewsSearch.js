@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import getConfig from 'next/config';
 
-function useNewsSearch(searchTerm, page) {
+function useNewsSearch(searchTerm, page, sorting) {
   const { publicRuntimeConfig } = getConfig();
 
   const [loading, setLoading] = useState(true);
@@ -12,7 +12,7 @@ function useNewsSearch(searchTerm, page) {
 
   useEffect(() => {
     setNews([]);
-  }, [searchTerm]);
+  }, [searchTerm, sorting]);
 
   useEffect(() => {
     setLoading(true);
@@ -27,6 +27,7 @@ function useNewsSearch(searchTerm, page) {
         q: searchTerm,
         'show-fields': 'body,headline,thumbnail',
         'api-key': publicRuntimeConfig.GUARDIAN_API_KEY,
+        'order-by': sorting,
       },
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
@@ -42,7 +43,7 @@ function useNewsSearch(searchTerm, page) {
         setError(true);
       });
     return () => cancel();
-  }, [searchTerm, page]);
+  }, [searchTerm, page, sorting]);
 
   return { loading, error, news, hasMore };
 }
