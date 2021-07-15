@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Loader, Card, TinyCard, Button, ScrollToTop } from '../components';
+import { Loader, Card, TinyCard, Button, ScrollToTop, Select } from '../components';
 import styles from '../styles/Home.module.scss';
 import useComboFetch from '../components/Hooks/useComboFetch';
 
@@ -108,6 +108,7 @@ function Home() {
               >
                 View Bookmark
               </Button>
+              <Select />
             </div>
           </div>
 
