@@ -1,67 +1,15 @@
-import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import getConfig from 'next/config';
 import Head from 'next/head';
 import Link from 'next/link';
-import axios from 'axios';
 import { Loader, Card, TinyCard, Button, ScrollToTop } from '../components';
 import styles from '../styles/Home.module.scss';
+import useComboFetch from '../components/Hooks/useComboFetch';
 
 function Home() {
   const router = useRouter();
-  const { publicRuntimeConfig } = getConfig();
-  const [isLoading, setIsLoading] = useState(true);
-  const [news, seTopStory] = useState([]);
-  const [sport, setSport] = useState([]);
-  const [culture, setCulture] = useState([]);
-  const [lifeStyle, setLifeStyle] = useState([]);
+  const { loading, error, news, sport, culture, lifeStyle } = useComboFetch();
 
-  useEffect(() => {
-    fetchNews();
-  }, []);
-
-  const fetchNews = () => {
-    setIsLoading(true); //starts spinner
-
-    // Category based news section
-    const baseUrl_Sport = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&section=sport&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
-    const baseUrl_Culture = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&section=culture&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
-    const baseUrl_LifeStyle = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=3&section=lifeandstyle&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
-
-    // Top story section
-    const baseUrl_TopStory = `${publicRuntimeConfig.GUARDIAN_API_URL}search?page-size=8&section=news&show-fields=body,headline,thumbnail&api-key=${publicRuntimeConfig.GUARDIAN_API_KEY}`;
-
-    const getSport = axios.get(baseUrl_Sport);
-    const getCulture = axios.get(baseUrl_Culture);
-    const getLifeStyle = axios.get(baseUrl_LifeStyle);
-    const getTopStory = axios.get(baseUrl_TopStory);
-
-    axios
-      .all([getSport, getCulture, getLifeStyle, getTopStory])
-      .then(
-        axios.spread((...allNews) => {
-          // console.log(allNews)
-          const allSport = allNews[0].data.response.results;
-          const allCulture = allNews[1].data.response.results;
-          const allLifeStyle = allNews[2].data.response.results;
-          const getTopStory = allNews[3].data.response.results;
-
-          setSport(allSport);
-          setCulture(allCulture);
-          setLifeStyle(allLifeStyle);
-          seTopStory(getTopStory);
-        })
-      )
-      .catch(function (error) {
-        setIsLoading(false);
-        console.log(error);
-      })
-      .finally(function () {
-        setIsLoading(false); // stop spinner (in response/error)
-      });
-  };
-
-  // combo grid layout
+  // Combo grid layout
   const sectionTopStory = (content) => {
     const primary = content.slice(0, 1);
     const secondary = content.slice(-3);
@@ -144,7 +92,7 @@ function Home() {
         <title>KaiOS | News</title>
       </Head>
 
-      {isLoading ? (
+      {loading ? (
         <div className='loader-container'>
           <Loader />
         </div>
