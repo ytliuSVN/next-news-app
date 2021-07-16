@@ -22,7 +22,7 @@ function Article({ news }) {
   };
 
   const iconCalendar = (
-    <FontAwesomeIcon icon={faCalendarAlt} color='#000000de' />
+    <FontAwesomeIcon icon={faCalendarAlt} color='#3c3c3c' />
   );
 
   return (

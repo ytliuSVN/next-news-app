@@ -1,4 +1,5 @@
 import styles from './TinyCard.module.scss';
+import PropTypes from 'prop-types';
 
 function TinyCard({ webTitle, bgColor }) {
   return (
@@ -13,5 +14,10 @@ function TinyCard({ webTitle, bgColor }) {
     </div>
   );
 }
+
+TinyCard.propTypes = {
+  webTitle: PropTypes.string.isRequired,
+  bgColor: PropTypes.string,
+};
 
 export default TinyCard;

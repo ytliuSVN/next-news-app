@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Toast.module.scss';
+import PropTypes from 'prop-types';
 
 function Toast({ bookmark, visible }) {
   const DELAY = 2500;
@@ -38,5 +39,10 @@ function Toast({ bookmark, visible }) {
     )
   );
 }
+
+Toast.propTypes = {
+  bookmark: PropTypes.bool,
+  visible: PropTypes.bool,
+};
 
 export default Toast;

@@ -1,4 +1,5 @@
 import styles from './Card.module.scss';
+import PropTypes from 'prop-types';
 
 function Card({ webTitle, headline, thumbnail, bgColor }) {
   const blankCard = () => {
@@ -34,5 +35,12 @@ function Card({ webTitle, headline, thumbnail, bgColor }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  webTitle: PropTypes.string.isRequired,
+  headline: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string,
+  bgColor: PropTypes.string,
+};
 
 export default Card;
