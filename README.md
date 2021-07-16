@@ -15,6 +15,13 @@ A News App built using NextJS, utilizing [Guardian API](https://open-platform.th
 
 > **NOTE:** This is ***not*** an official website, just for experiment purpose.
 
+## User Stories
+
+- [ ] The user can browse the latest news from the Guardian API and see the articles collated together.
+- [ ] The user can sort all news based on their sorting strategy (`Newest First` or `Oldest First`).
+- [ ] Allow users to search for articles by entering a search term.
+- [ ] Progressively load more articles by scrolling down the list.
+
 ## App Details
 
 
