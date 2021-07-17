@@ -100,45 +100,59 @@ function Home() {
     setSorting(e.target.value);
   };
 
+  // Error handling and loading
+  const getContent = () => {
+    if (error)
+      return (
+        <div className={styles.empty}>
+          <div className={styles.icon}></div>
+          <h2>Can't display page</h2>
+          <h4>We could not find what you were looking for.</h4>
+        </div>
+      );
+    if (loading)
+      return (
+        <div className='loader-container'>
+          <Loader />
+        </div>
+      );
+    return (
+      <main className={styles.main}>
+        <div className={styles.heading}>
+          <h1>Top Stories</h1>
+          <div className={styles.toolkit}>
+            <Button
+              onClick={() => {
+                router.push('/bookmarks');
+              }}
+            >
+              View Bookmark
+            </Button>
+            <Select onChange={handleSorting} orderBy={sorting} />
+          </div>
+        </div>
+
+        {sectionTopStory(news)}
+
+        <h2>Sports</h2>
+        {sectionCards(sport, '#d32f2f')}
+
+        <h2>Culture</h2>
+        {sectionCards(culture, '#FFC107')}
+
+        <h2>Lifestyle</h2>
+        {sectionCards(lifeStyle, '#388E3C')}
+      </main>
+    );
+  };
+
   return (
     <div className='container'>
       <Head>
         <title>KaiOS | News</title>
       </Head>
 
-      {loading ? (
-        <div className='loader-container'>
-          <Loader />
-        </div>
-      ) : (
-        <main className={styles.main}>
-          <div className={styles.heading}>
-            <h1>Top Stories</h1>
-            <div className={styles.toolkit}>
-              <Button
-                onClick={() => {
-                  router.push('/bookmarks');
-                }}
-              >
-                View Bookmark
-              </Button>
-              <Select onChange={handleSorting} orderBy={sorting}/>
-            </div>
-          </div>
-
-          {sectionTopStory(news)}
-
-          <h2>Sports</h2>
-          {sectionCards(sport, '#d32f2f')}
-
-          <h2>Culture</h2>
-          {sectionCards(culture, '#FFC107')}
-
-          <h2>Lifestyle</h2>
-          {sectionCards(lifeStyle, '#388E3C')}
-        </main>
-      )}
-
+      {getContent()}
       <ScrollToTop />
     </div>
   );

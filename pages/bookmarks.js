@@ -16,13 +16,13 @@ function Bookmarks() {
             <Select />
           </div>
         </div>
-
-        <div className={styles.empty}>
-          <div className={styles.icon}></div>
-          <h2>OOPS!</h2>
-          <h4>We could not find what you were looking for.</h4>
-        </div>
       </main>
+
+      <div className={styles.empty}>
+        <div className={styles.icon}></div>
+        <h2>OOPS!</h2>
+        <h4>We could not find what you were looking for.</h4>
+      </div>
     </div>
   );
 }

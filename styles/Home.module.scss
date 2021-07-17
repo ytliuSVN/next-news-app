@@ -43,6 +43,26 @@ $gridGap: 30px;
     }
 }
 
+.empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .icon {
+        display: block;
+        background-image: url("../public/assets/can-t-display-page.svg");
+        width: 100px;
+        height: 100px;
+        background-size: 100% 100%;
+    }
+
+    h4 {
+        color: #696969;
+    }
+}
+
 @media (max-width: 600px) {
     .grid_wrap {
         margin: 2rem 0;
