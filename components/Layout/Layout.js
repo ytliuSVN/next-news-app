@@ -64,7 +64,11 @@ function Layout({ children }) {
               >
                 <a
                   onClick={() => setSearchTerm('')}
-                  ref={content.length === idx + 1 ? lastNewsElementRef : null}
+                  ref={
+                    content.length === idx + 1 && content.length >= 15
+                      ? lastNewsElementRef
+                      : null
+                  }
                 >
                   <Card
                     webTitle={item.webTitle}
@@ -107,7 +111,6 @@ function Layout({ children }) {
               <Loader />
             </div>
           )}
-          {error && <p>Error!</p>}
         </main>
         <ScrollToTop />
       </div>
