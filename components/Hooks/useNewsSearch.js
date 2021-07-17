@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
 import getConfig from 'next/config';
 
@@ -10,7 +10,8 @@ function useNewsSearch(searchTerm, page, sorting) {
   const [news, setNews] = useState([]);
   const [hasMore, setHasMore] = useState(false);
 
-  useEffect(() => {
+  useMemo(() => {
+    if (!searchTerm) return;
     setNews([]);
   }, [searchTerm, sorting]);
 
