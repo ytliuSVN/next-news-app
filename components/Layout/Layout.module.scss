@@ -45,6 +45,27 @@ $gridGap: 30px;
     }
 }
 
+.empty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .icon {
+        display: block;
+        background-image: url("../../public/assets/search-no-found.svg");
+        width: 100px;
+        height: 100px;
+        background-size: 100% 100%;
+        margin-bottom: 15px;
+    }
+
+    h4 {
+        color: #696969;
+    }
+}
+
 @media (max-width: 600px) {
     .grid_wrap {
         margin: 2rem 0;

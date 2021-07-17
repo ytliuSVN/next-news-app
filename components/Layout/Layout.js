@@ -85,33 +85,48 @@ function Layout({ children }) {
     );
   };
 
+  const getContent = () => {
+    if (error)
+      return (
+        <div className={styles.empty}>
+          <div className={styles.icon}></div>
+          <h2>OOPS!</h2>
+          <h4>We could not find what you were looking for.</h4>
+        </div>
+      );
+    return (
+      <main className={styles.main}>
+        <div className={styles.heading}>
+          <h1>Search Result</h1>
+          <div className={styles.toolkit}>
+            <Button
+              onClick={() => {
+                router.push('/bookmarks');
+                setSearchTerm('');
+              }}
+            >
+              View Bookmark
+            </Button>
+            <Select onChange={handleSorting} orderBy={sorting} />
+          </div>
+        </div>
+
+        {searchCards(news, '#d32f2f')}
+
+        {loading && (
+          <div className={styles.loading}>
+            <Loader />
+          </div>
+        )}
+      </main>
+    );
+  };
+
   const searchResult = () => {
     return (
       <div className='container'>
-        <main className={styles.main}>
-          <div className={styles.heading}>
-            <h1>Search Result</h1>
-            <div className={styles.toolkit}>
-              <Button
-                onClick={() => {
-                  router.push('/bookmarks');
-                  setSearchTerm('');
-                }}
-              >
-                View Bookmark
-              </Button>
-              <Select onChange={handleSorting} orderBy={sorting} />
-            </div>
-          </div>
+        {getContent()}
 
-          {searchCards(news, '#d32f2f')}
-
-          {loading && (
-            <div className={styles.loading}>
-              <Loader />
-            </div>
-          )}
-        </main>
         <ScrollToTop />
       </div>
     );
