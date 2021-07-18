@@ -23,23 +23,21 @@ function Home() {
   const sectionTopStory = (content) => {
     const primary = content.slice(0, 1);
     const secondary = content.slice(-3);
-    const tertiary = content.slice(1, 3);
-    const quaternary = content.slice(3, 5);
+    const tertiary = content.slice(1, 5);
 
     return (
       <>
         <section className={styles.grid_wrap}>
           <div className={styles.grid}>
             {sectionCards(primary, '#388E3C')}
-            <div>
-              <div className={styles.grid}>
-                {titleOnlyCards(tertiary, ['#D32F2F', '#FFC107'])}
-                {titleOnlyCards(quaternary, ['#2196F3', '#388E3C'])}
-              </div>
-            </div>
+            {titleOnlyCards(tertiary, [
+              '#D32F2F',
+              '#FFC107',
+              '#2196F3',
+              '#388E3C',
+            ])}
           </div>
         </section>
-
         {sectionCards(secondary)}
       </>
     );

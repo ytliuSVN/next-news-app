@@ -7,6 +7,7 @@ $gridGap: 30px;
 
 .grid {
     display: grid;
+    grid-auto-flow: row;
     grid-template-columns: repeat(auto-fit, minmax($minColWidth, 1fr));
     grid-gap: $gridGap;
 

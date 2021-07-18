@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function Card({ webTitle, headline, thumbnail, bgColor }) {
   const blankCard = () => {
     return (
-      <div className={styles.overlay}>
+      <div className={styles.fake}>
         <div className={styles.logo}></div>
       </div>
     );
