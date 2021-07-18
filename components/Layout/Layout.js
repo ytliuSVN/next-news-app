@@ -86,7 +86,7 @@ function Layout({ children }) {
   };
 
   const getContent = () => {
-    if (error)
+    if ((!loading && !news?.length) || error) {
       return (
         <div className={styles.empty}>
           <div className={styles.icon}></div>
@@ -94,6 +94,7 @@ function Layout({ children }) {
           <h4>We could not find what you were looking for.</h4>
         </div>
       );
+    }
     return (
       <main className={styles.main}>
         <div className={styles.heading}>
