@@ -7,7 +7,7 @@ $gridGap: 30px;
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax($minColWidth, 1fr));
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: $gridGap;
 
     & + .grid {
@@ -69,6 +69,16 @@ $gridGap: 30px;
 @media (max-width: 600px) {
     .grid_wrap {
         margin: 2rem 0;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax($minColWidth, 1fr));
+        grid-gap: $gridGap;
+
+        & + .grid {
+            margin-top: $gridGap;
+        }
     }
 
     .heading {
