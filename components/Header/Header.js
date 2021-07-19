@@ -9,7 +9,7 @@ function Header(props) {
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link href='/'>
-            <a onClick={() => setSearchTerm('')}>
+            <a onClick={props.onClick}>
               <Image
                 src='/assets/KaiOS-Logo.svg'
                 alt='KaiOS Logo'

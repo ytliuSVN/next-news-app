@@ -1,4 +1,4 @@
-import { useCallback, useState, useRef } from 'react';
+import { useCallback, useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
@@ -24,6 +24,7 @@ function Layout({ children }) {
     sorting
   );
   const observer = useRef();
+  const mountedRef = useRef(true);
 
   const lastNewsElementRef = useCallback(
     (node) => {
@@ -48,6 +49,17 @@ function Layout({ children }) {
     setSorting(e.target.value);
   };
 
+  const handleReset = useCallback(async () => {
+    setSearchTerm('');
+  }, [mountedRef]);
+
+  useEffect(() => {
+    handleReset();
+    return () => {
+      mountedRef.current = false;
+    };
+  }, [handleReset]);
+
   // 3-column layout grid
   const searchCards = (content, bgColor) => {
     return (
@@ -63,7 +75,7 @@ function Layout({ children }) {
                 }}
               >
                 <a
-                  onClick={() => setSearchTerm('')}
+                  onClick={handleReset}
                   ref={
                     content.length === idx + 1 && content.length >= 15
                       ? lastNewsElementRef
@@ -135,7 +147,11 @@ function Layout({ children }) {
 
   return (
     <div className='content'>
-      <Header onChange={handleSearch} searchTerm={searchTerm} />
+      <Header
+        onChange={handleSearch}
+        searchTerm={searchTerm}
+        onClick={handleReset}
+      />
       {!searchTerm ? children : searchResult()}
       <Footer />
     </div>
