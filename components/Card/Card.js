@@ -14,13 +14,13 @@ function Card({ webTitle, headline, thumbnail, bgColor }) {
     <div className={styles.wrapper}>
       <figure className={styles.figure}>
         {thumbnail ? (
-          <img className={styles.figure_img} src={thumbnail} />
+          <img className={styles.figure_img} src={thumbnail} alt={webTitle} />
         ) : (
           blankCard()
         )}
         <figcaption className={styles.figcaption}>
           <div className={styles.webTitle}>
-            <h3>{webTitle}</h3>
+            <p>{webTitle}</p>
           </div>
 
           <div className={styles.headline}>

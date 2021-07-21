@@ -5,7 +5,7 @@ function TinyCard({ webTitle, bgColor }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.webTitle}>
-        <h3>{webTitle}</h3>
+        <p>{webTitle}</p>
       </div>
       <div
         className={styles.baseline}
