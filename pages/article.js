@@ -5,7 +5,10 @@ import Image from 'next/image';
 import styles from '../styles/Article.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
-import { Toast, Button, ScrollToTop } from '../components';
+import { Button, ScrollToTop } from '../components';
+import loadable from '@loadable/component';
+
+const Toast = loadable(() => import('../components/Toast/Toast'));
 
 function Article({ news }) {
   const ADD_BOOKMARK = 'Add Bookmark';
@@ -21,9 +24,7 @@ function Article({ news }) {
     setButtonText(!bookmark ? REMOVE_BOOKMARK : ADD_BOOKMARK);
   };
 
-  const iconCalendar = (
-    <FontAwesomeIcon icon={faCalendarAlt} color='#3c3c3c' />
-  );
+  const iconCalendar = <FontAwesomeIcon icon={faCalendarAlt} color='#3c3c3c' />;
 
   return (
     <div className='container'>

@@ -90,7 +90,7 @@
         background: linear-gradient(to bottom left, rgba(33, 8, 53, 0.9) 20%, rgba(42, 19, 63, 0.9) 100%);
         transition: all 0.2s ease;
 
-        h3 {
+        div:first-child {
             text-decoration: underline;
         }
     }
