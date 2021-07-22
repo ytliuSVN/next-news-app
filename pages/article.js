@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import getConfig from 'next/config';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import styles from '../styles/Article.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { Button, ScrollToTop } from '../components';
-import loadable from '@loadable/component';
 
-const Toast = loadable(() => import('../components/Toast/Toast'));
+const Toast = dynamic(() => import('../components/Toast/Toast'));
 
 function Article({ news }) {
   const ADD_BOOKMARK = 'Add Bookmark';
