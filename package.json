@@ -8,7 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open",
+    "cy:run:chrome": "cypress run --browser chrome",
+    "cy:run:firefox": "cypress run --browser firefox"
   },
   "keywords": [],
   "author": "",
@@ -23,5 +26,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "sass": "^1.35.1"
+  },
+  "devDependencies": {
+    "cypress": "^8.0.0"
   }
 }
