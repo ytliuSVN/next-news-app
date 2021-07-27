@@ -1,4 +1,5 @@
 import '../styles/globals.scss';
+import { ThemeProvider } from '../components/ThemeContext';
 import Layout from '../components/Layout/Layout';
 
 import Router from 'next/router';
@@ -20,9 +21,11 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <ThemeProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
   );
 }
 
